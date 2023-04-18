@@ -1,5 +1,10 @@
 {{ define "main" }}
   <h1 class="title">{{ .Site.Title }}</h1>
+  <h6 class="subtitle">
+      {{ .Site.Params.byline }} <br></br>
+      see my writing at <a href={{ .Site.Params.link }}>{{ .Site.Params.linkText }}</a>
+  </h6>
+
 
   {{ .Content }}
 
