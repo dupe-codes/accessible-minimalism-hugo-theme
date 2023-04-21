@@ -41,5 +41,16 @@
 
 {{ end }}
 
+{{ if not .Params.noComments }}
+<script src="https://utteranc.es/client.js"
+        repo="njdup/projects-archive"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+{{ end }}
 
 {{ end }}
