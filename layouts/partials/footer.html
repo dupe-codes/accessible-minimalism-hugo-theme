@@ -9,9 +9,10 @@
       </a>
     </li>
     {{ end }}
-    <li id="blinking-cursor"></li>
+    <!--    <li id="blinking-cursor"></li> -->
 </ul>
 
+<!-- TODO: maybe add back this blinking cursor after removing under construction effect 
 <script>
   (function() {
     const cursorElement = document.getElementById('blinking-cursor');
@@ -28,6 +29,45 @@
 
     setInterval(toggleVisibility, blinkInterval);
   })();
+</script>
+-->
+
+<script>
+    (function() {
+        const progressBar = document.querySelector(".progress-bar");
+
+        function animateProgressBar() {
+            const progressStates = [
+                "[>-----] 20%",
+                "[=>----] 40%",
+                "[===>--] 60%",
+                "[====>-] 80%"
+            ];
+            let progressIndex = 0;
+
+            const progressInterval = setInterval(() => {
+                progressBar.textContent = progressStates[progressIndex];
+                progressIndex++;
+                if (progressIndex === progressStates.length) {
+                    clearInterval(progressInterval);
+                    blinkCursor();
+                }
+            }, 800);
+        }
+
+        function blinkCursor() {
+            const blinkingState = "[====>-] 80%";
+            const hiddenState = "[====->] 80%";
+            let showCursor = false;
+
+            setInterval(() => {
+                progressBar.textContent = showCursor ? blinkingState : hiddenState;
+                showCursor = !showCursor;
+            }, 800);
+        }
+
+        animateProgressBar();
+    })()
 </script>
 
 
