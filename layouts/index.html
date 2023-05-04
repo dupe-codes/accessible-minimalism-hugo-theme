@@ -1,15 +1,15 @@
 {{ define "main" }}
   <h1 class="title">{{ .Site.Title }}</h1>
-  <h6><em>compiling...</em><span class="progress-bar">[------------]  0%</span></h6>
-  <div class="hidden-div">
-      <h6 class="subtitle">
-          {{ .Site.Params.byline }} <br></br>
-          see my writing @ <a href={{ .Site.Params.link }}>{{ .Site.Params.linkText }}</a>
-          <br></br> learn who i am @ <a href={{ .Site.Params.aboutMeLink }}>dupe.lol/about-me</a>
-          <br></br> see the code @ <a href={{ .Site.Params.githubLink }}> github/njdup</a>
+  <h6><em>under construction...</em> <span class="progress-bar">[------] 0%</span></h6>
+  <h6 class="subtitle">
+      {{ .Site.Params.byline }} <br></br>
+      see my writing @ <a href={{ .Site.Params.link }}>{{ .Site.Params.linkText }}</a>
+      <br></br> learn who i am @ <a href={{ .Site.Params.aboutMeLink }}>dupe.lol/about-me</a>
+      <br></br> see the code @ <a href={{ .Site.Params.githubLink }}> github/njdup</a>
 
-      </h6>
-      {{ .Content }}
-  </div>
+  </h6>
+
+
+  {{ .Content }}
 
 {{ end }}
