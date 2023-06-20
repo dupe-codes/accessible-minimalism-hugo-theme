@@ -1,16 +1,18 @@
 <p><a name="nav-menu" id="nav-menu"></a></p>
 
-<ul>
-    {{ range .Site.Menus.main }}
-    <li>
-      <a href="{{ .URL }}">
-      {{ $text := print .Name | safeHTML }}
-      {{ $text }}
-      </a>
-    </li>
-    {{ end }}
-    <!--    <li id="blinking-cursor"></li> -->
-</ul>
+<div class="hidden-div">
+    <ul>
+        {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}">
+          {{ $text := print .Name | safeHTML }}
+          {{ $text }}
+          </a>
+        </li>
+        {{ end }}
+        <!--    <li id="blinking-cursor"></li> -->
+    </ul>
+</div>
 
 <!-- TODO: maybe add back this blinking cursor after removing under construction effect 
 <script>
@@ -38,15 +40,17 @@
 
         if (!progressBar) {
             console.log("No progress bar found");
+            showHiddenContent();
             return;
         }
 
         function animateProgressBar() {
             const progressStates = [
-                "[>-----] 20%",
-                "[=>----] 40%",
-                "[===>--] 60%",
-                "[====>-] 80%"
+                "[==>--------]  20%",
+                "[====>------]  40%",
+                "[======>----]  60%",
+                "[========>--]  80%",
+                "[==========>] 100%",
             ];
             let progressIndex = 0;
 
@@ -55,20 +59,17 @@
                 progressIndex++;
                 if (progressIndex === progressStates.length) {
                     clearInterval(progressInterval);
-                    blinkCursor();
-                }
-            }, 800);
+                    progressBar.textContent = "[==========>] 100%, done!";
+                    showHiddenContent();
+               }
+            }, 275);
         }
 
-        function blinkCursor() {
-            const blinkingState = "[====>-] 80%";
-            const hiddenState = "[====->] 80%";
-            let showCursor = false;
-
-            setInterval(() => {
-                progressBar.textContent = showCursor ? blinkingState : hiddenState;
-                showCursor = !showCursor;
-            }, 800);
+        function showHiddenContent() {
+            var hiddenDivs = document.getElementsByClassName("hidden-div");
+            for (var i = 0; i < hiddenDivs.length; i++) {
+                hiddenDivs[i].style.display = "block";
+            }
         }
 
         animateProgressBar();
